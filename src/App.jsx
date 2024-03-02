@@ -55,7 +55,7 @@ function App () {
     if (newWinner) {
       confetti()
       setWinner(newWinner)
-    } else if (checkEndGame(newBoard)) {
+    } else if (checkEndGame(newBoard, newTurn)) {
       setWinner(false) // empate
     }
   }

@@ -1,4 +1,5 @@
 import { WINNER_COMBOS } from '../constants.js'
+import { TURNS } from '../constants.js'
 
 export const checkOverlapping = (currentPiece, selectedPiece) => {
   // Check if the selected piece is not present
@@ -40,9 +41,32 @@ export const checkWinnerFrom = (boardToCheck) => {
   return null;
 }
 
-export const checkEndGame = (newBoard) => {
-  // revisamos si hay un empate
-  // si no hay más espacios vacíos
-  // en el tablero
-  return newBoard.every((square) => square !== null)
-}
+export const checkEndGame = (newBoard, newTurn) => {
+  // Count the number of each size of piece placed on the board for each player
+  let placedSquares = { big: 0, medium: 0, small: 0 };
+  let placedCircles = { big: 0, medium: 0, small: 0 };
+
+  newBoard.forEach(square => {
+    if (square) {
+      if (square.shape === 'square') {
+        placedSquares[square.size]++;
+      } else if (square.shape === 'circle') {
+        placedCircles[square.size]++;
+      }
+    }
+  });
+
+  // Determine the number of each size of piece remaining for the current player
+  const remainingPieces = newTurn === TURNS.square ? placedSquares : placedCircles;
+  const totalPiecesPerSize = 2; // Since each opponent has 2 big, 2 medium, and 2 small
+
+  // Check if there are larger pieces available to be placed for the current turn
+  const canPlaceLargerPiece = Object.keys(remainingPieces).some(size => {
+    const sizeIndex = ['small', 'medium', 'big'].indexOf(size);
+    const largerSizes = ['small', 'medium', 'big'].slice(sizeIndex + 1);
+    return largerSizes.some(largerSize => remainingPieces[largerSize] < totalPiecesPerSize);
+  });
+
+  // The game ends (returns true for endGame) if no larger pieces are available to be placed
+  return !canPlaceLargerPiece;
+};
