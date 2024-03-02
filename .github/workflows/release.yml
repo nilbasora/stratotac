@@ -15,7 +15,7 @@ jobs:
 
       - name: Bump version and push tag
         id: tag_version
-        uses: mathieudutour/github-tag-action@latest
+        uses: mathieudutour/github-tag-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           release_branches: production
