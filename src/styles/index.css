@@ -74,7 +74,7 @@ body {
 .board .pieces {
   display: grid;
   grid-template-columns: repeat(2, auto); /* Two columns, auto-width to fit content */
-  grid-template-rows: repeat(3, 60px); /* Three rows, each with the same height as .square */
+  grid-template-rows: repeat(3, auto); /* Three rows, each with the same height as .square */
   align-items: center;
   align-content: center; /* Align the content at the start of the container */
   gap: 10px; /* Gap between the pieces, adjust as needed */
