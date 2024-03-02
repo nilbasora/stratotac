@@ -62,7 +62,7 @@ function App () {
 
   return (
     <main className='board'>
-      <h1>StratoTac</h1>
+      <h1><img src='/logo-stratotac.png' alt="StratoTac"/></h1>
       <section className='game-container'>
 
     <section className={`pieces ${turn === TURNS.square ? 'current-turn' : ''}`}>
