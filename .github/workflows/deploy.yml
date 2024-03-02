@@ -1,0 +1,30 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - production # Trigger on pushes to the production branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2 # Checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' # Specify the Node.js version you want to use
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build # Replace this with your build script
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
+          clean: true # Automatically remove deleted files from the deploy branch
