@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - production # This workflow triggers when commits are pushed to production
-    tags:
-      - 'v*' # This workflow also triggers when a new tag is pushed
 
 jobs:
   build:
@@ -14,6 +12,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
+
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@latest
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_branches: production
+          default_bump: minor # Automatically increments the minor version. Change this to major, minor, or patch as needed.
+          create_annotated_tag: true # Creates an annotated tag, which is recommended for most use cases.
+          # Optional: If you want to use a specific versioning scheme or customize tag creation further, you can add additional configuration here.
+
+      - name: Check output of previous step
+        run: echo "The tag is ${{ steps.tag_version.outputs.new_tag }}"
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
