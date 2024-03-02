@@ -33,7 +33,6 @@ jobs:
           release_name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: |
             Changes in this Release
-            - First Change
-            - Second Change
+            - First version of the release
           draft: false
           prerelease: false
