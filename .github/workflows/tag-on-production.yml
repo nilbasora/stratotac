@@ -1,4 +1,4 @@
-name: Tag on Production Push
+name: Tag and Release on Production Push
 
 on:
   push:
@@ -20,3 +20,13 @@ jobs:
           default_bump: minor # Automatically increments the minor version. Change this to major, minor, or patch as needed.
           create_annotated_tag: true # Creates an annotated tag, which is recommended for most use cases.
           # Optional: If you want to use a specific versioning scheme or customize tag creation further, you can add additional configuration here.
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.create_tag.outputs.new_tag }}
+          release_name: Release ${{ steps.create_tag.outputs.new_tag }}
+          draft: false
+          prerelease: false
