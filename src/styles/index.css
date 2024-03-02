@@ -159,7 +159,7 @@ body {
 /* Add this media query for mobile devices */
 @media (max-width: 768px) {
   .board h1 img {
-    max-width: 250px; /* Adjust this value to resize the logo on mobile devices */
+    max-width: 180px; /* Adjust this value to resize the logo on mobile devices */
     height: auto; /* Maintain aspect ratio */
     margin-top: -30px;
   }
@@ -175,14 +175,13 @@ body {
   }
 
   .board .pieces {
-    display: grid;
     grid-template-columns: repeat(3, auto); /* 3 columns */
     grid-template-rows: repeat(2, auto); /* 2 rows */
     grid-auto-flow: column; /* This will ensure the pieces are placed side by side */
-    gap: 10px; /* Adjust the gap between the pieces */
+    gap: 5px; /* Adjust the gap between the pieces */
     width: 90%; /* Adjust width to fit mobile screens */
     margin: 20px auto; /* Add some margin above and below the pieces */
-    margin-top: -20px;
+    margin-top: -40px;
   }
 
   .board .game {
