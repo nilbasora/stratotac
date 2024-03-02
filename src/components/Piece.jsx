@@ -2,9 +2,9 @@ import React from 'react';
 
 // Styles for the different sizes
 const sizeStyles = {
-  small: { width: '30px', height: '30px' },
+  small: { width: '25px', height: '25px' },
   medium: { width: '45px', height: '45px' },
-  big: { width: '60px', height: '60px' },
+  big: { width: '65px', height: '65px' },
 };
 
 // The Piece component
