@@ -79,6 +79,9 @@ body {
   align-content: center; /* Align the content at the start of the container */
   gap: 10px; /* Gap between the pieces, adjust as needed */
   justify-content: center;
+  cursor: pointer;
+  padding: 35px; /* Add some padding to ensure the border does not overlap the contents */
+  margin: -10px; /* Adjust the margin to compensate for the added padding, if necessary */
 }
 
 
@@ -149,7 +152,6 @@ body {
 }
 
 .current-turn {
-  border: 2px dotted white;
-  padding: 10px; /* Add some padding to ensure the border does not overlap the contents */
-  margin: -10px; /* Adjust the margin to compensate for the added padding, if necessary */
+  border: 5px dotted white;
+  padding: 30px !important;
 }
