@@ -62,10 +62,10 @@ function App () {
 
   return (
     <main className='board'>
-      <h1><img src='/logo-stratotac.png' alt="StratoTac"/></h1>
+      <h1 className='logo'><img src='/logo-stratotac.png' alt="StratoTac"/></h1>
       <section className='game-container'>
 
-    <section className={`pieces ${turn === TURNS.square ? 'current-turn' : ''}`}>
+    <section className={`pieces square-pieces ${turn === TURNS.square ? 'current-turn' : 'not-current-turn'}`}>
       {
         TURNS.square.map((piece, index) => {
           const isPlaced = placedPieces.includes(piece);
@@ -110,7 +110,7 @@ function App () {
       }
     </section>
 
-    <section className={`pieces ${turn === TURNS.circle ? 'current-turn' : ''}`}>
+    <section className={`pieces circle-pieces ${turn === TURNS.circle ? 'current-turn' : 'not-current-turn'}`}>
       {
         TURNS.circle.map((piece, index) => {
           const isPlaced = placedPieces.includes(piece);

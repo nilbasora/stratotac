@@ -155,3 +155,47 @@ body {
   border: 5px dotted white;
   padding: 30px !important;
 }
+
+/* Add this media query for mobile devices */
+@media (max-width: 600px) {
+  .board h1 img {
+    max-width: 250px; /* Adjust this value to resize the logo on mobile devices */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: -30px;
+  }
+
+  .pieces.not-current-turn {
+    display: none;
+  }
+
+  .board .game-container {
+    flex-direction: column; /* Stack the game board and the pieces vertically */
+    align-items: center; /* Center align the items */
+    justify-content: center; /* Center along the main axis */
+  }
+
+  .board .pieces {
+    width: 90%; /* Adjust width to fit mobile screens */
+    margin: 20px auto; /* Add some margin above and below the pieces */
+    margin-top: -20px;
+  }
+
+  .board .game {
+    order: 1; /* This ensures the board will always be on top */
+    margin-bottom: 20px; /* Ensure there's space between the board and the pieces */
+  }
+
+  .board .game-container {
+    flex-direction: column; /* Stack the game board and the pieces vertically */
+    align-items: center; /* Center align the items */
+    justify-content: center; /* Center along the main axis */
+  }
+
+  .board .pieces.square-pieces {
+    order: 3; /* This will place square pieces at the bottom */
+  }
+
+  .board .pieces.circle-pieces {
+    order: 2; /* This will ensure circle pieces also stay below the board but above square pieces if needed */
+  }
+}
