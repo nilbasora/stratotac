@@ -1,0 +1,22 @@
+name: Tag on Production Push
+
+on:
+  push:
+    branches:
+      - production # This workflow triggers when commits are pushed to production
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Bump version and push tag
+        uses: mathieudutour/github-tag-action@v5.6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_branches: production
+          default_bump: minor # Automatically increments the minor version. Change this to major, minor, or patch as needed.
+          create_annotated_tag: true # Creates an annotated tag, which is recommended for most use cases.
+          # Optional: If you want to use a specific versioning scheme or customize tag creation further, you can add additional configuration here.
